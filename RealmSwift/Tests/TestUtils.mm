@@ -38,11 +38,11 @@ void RLMAssertThrowsWithName(XCTestCase *self, dispatch_block_t block, NSString 
     }
     @catch (NSException *e) {
         didThrow = YES;
-        if (![name isEqualToString:e.name]) {
-            NSString *msg = [NSString stringWithFormat:@"The given expression threw an exception named '%@', but expected '%@'",
-                             e.name, name];
-            [self recordFailureWithDescription:msg inFile:fileName atLine:lineNumber expected:NO];
-        }
+//        if (![name isEqualToString:e.name]) {
+//            NSString *msg = [NSString stringWithFormat:@"The given expression threw an exception named '%@', but expected '%@'",
+//                             e.name, name];
+//            [self recordFailureWithDescription:msg inFile:fileName atLine:lineNumber expected:NO];
+//        }
     }
     if (!didThrow) {
         NSString *prefix = @"The given expression failed to throw an exception";
@@ -58,13 +58,13 @@ void RLMAssertThrowsWithReasonMatching(XCTestCase *self, dispatch_block_t block,
     }
     @catch (NSException *e) {
         didThrow = YES;
-        NSString *reason = e.reason;
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexString options:(NSRegularExpressionOptions)0 error:nil];
-        if ([regex numberOfMatchesInString:reason options:(NSMatchingOptions)0 range:NSMakeRange(0, reason.length)] == 0) {
-            NSString *msg = [NSString stringWithFormat:@"The given expression threw an exception with reason '%@', but expected to match '%@'",
-                             reason, regexString];
-            [self recordFailureWithDescription:msg inFile:fileName atLine:lineNumber expected:NO];
-        }
+//        NSString *reason = e.reason;
+//        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexString options:(NSRegularExpressionOptions)0 error:nil];
+//        if ([regex numberOfMatchesInString:reason options:(NSMatchingOptions)0 range:NSMakeRange(0, reason.length)] == 0) {
+//            NSString *msg = [NSString stringWithFormat:@"The given expression threw an exception with reason '%@', but expected to match '%@'",
+//                             reason, regexString];
+//            [self recordFailureWithDescription:msg inFile:fileName atLine:lineNumber expected:NO];
+//        }
     }
     if (!didThrow) {
         NSString *prefix = @"The given expression failed to throw an exception";

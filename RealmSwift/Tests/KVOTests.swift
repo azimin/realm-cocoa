@@ -70,6 +70,8 @@ class KVOTests: TestCase {
         super.tearDown()
     }
 
+    override func invokeTest() { }
+
     var changeDictionary: [NSKeyValueChangeKey: Any]?
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?,
